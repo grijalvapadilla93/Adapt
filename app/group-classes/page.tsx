@@ -95,8 +95,8 @@ export default function GroupClassesPage() {
 
   return (
     <div className="pt-24 selection:bg-primary-container selection:text-on-primary-container">
-      {/* Hero */}
-      <section className="px-6 md:px-16 py-16 max-w-[1440px] mx-auto text-center">
+      {/* Hero — bg-background */}
+      <section className="bg-background px-6 md:px-16 py-16 max-w-[1440px] mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function GroupClassesPage() {
           className="inline-flex items-center justify-center mb-6 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(42,183,255,0.1)]"
         >
           <span className="text-primary text-xl mr-2">⚡</span>
-          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase">Elite Group Training</span>
+          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase">Group Training</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -124,8 +124,8 @@ export default function GroupClassesPage() {
         </motion.p>
       </section>
 
-      {/* Schedule Tabs */}
-      <section className="px-6 md:px-16 pb-16 max-w-[1440px] mx-auto">
+      {/* Schedule Tabs — bg-surface-container-lowest */}
+      <section className="bg-surface-container-lowest px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
         <div className="flex overflow-x-auto gap-2 mb-8 pb-2 hide-scrollbar">
           {days.map((day) => (
             <button
@@ -169,8 +169,8 @@ export default function GroupClassesPage() {
         </div>
       </section>
 
-      {/* Class Cards */}
-      <section className="px-6 md:px-16 pb-16 max-w-[1440px] mx-auto">
+      {/* Class Cards — bg-background */}
+      <section className="bg-background px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -219,8 +219,8 @@ export default function GroupClassesPage() {
         </div>
       </section>
 
-      {/* Class Pricing */}
-      <section className="px-6 md:px-16 pb-24 max-w-[1440px] mx-auto">
+      {/* Class Pricing — bg-surface-container-lowest */}
+      <section className="bg-surface-container-lowest px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -275,6 +275,45 @@ export default function GroupClassesPage() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* CTA Banner — "Find Your Class" */}
+      <section className="bg-surface-container-lowest px-6 md:px-16 py-24 max-w-[1440px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-surface-container-high border border-primary/20 rounded-2xl p-12 md:p-16 text-center shadow-[0_0_40px_rgba(42,183,255,0.08)]"
+        >
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="font-display-xl text-3xl md:text-5xl uppercase mb-6 text-primary-container"
+          >
+            <FlipWord word="FIND YOUR CLASS" triggerOnView />
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-8"
+          >
+            Not sure which class is right for you? Explore our full schedule and discover the training style that matches your goals.
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            onClick={openLeadModal}
+            className="bg-primary-container text-black font-label-md text-label-md uppercase rounded-full px-10 py-4 font-bold shadow-[0_0_25px_rgba(42,183,255,0.35)] hover:shadow-[0_0_40px_rgba(42,183,255,0.55)] hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            Get Started
+          </motion.button>
+        </motion.div>
       </section>
     </div>
   );

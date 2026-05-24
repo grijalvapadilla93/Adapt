@@ -24,6 +24,38 @@ const coaches = [
   }
 ];
 
+const benefits = [
+  {
+    title: "Custom Programming",
+    desc: "Tailored regimens engineered to your biomechanics, goals, and performance data.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M12 20V10" />
+        <path d="M18 20V4" />
+        <path d="M6 20v-4" />
+      </svg>
+    )
+  },
+  {
+    title: "Biometric Tracking",
+    desc: "Real-time physiological monitoring with HRV, VO2 max, lactate threshold, and sleep analytics.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      </svg>
+    )
+  },
+  {
+    title: "Injury Prevention",
+    desc: "Prehab protocols, kinetic chain analysis, and corrective movement patterning by specialists.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    )
+  }
+];
+
 export default function PersonalTrainingPage() {
   const openLeadModal = () => {
     window.dispatchEvent(new CustomEvent("open-lead-modal", { detail: { plan: "Pro" } }));
@@ -42,10 +74,18 @@ export default function PersonalTrainingPage() {
           />
         </div>
         <div className="relative z-20 text-center max-w-4xl mx-auto p-8 md:p-12 rounded-xl bg-[#151A22]/60 backdrop-blur-xl border border-white/10">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-label-md text-label-md text-primary/80 uppercase tracking-[0.25em] mb-4"
+          >
+            1-on-1 Coaching
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display-xl text-5xl sm:text-7xl text-primary mb-6 uppercase"
           >
             <FlipWord word="PERSONAL TRAINING" />
@@ -53,7 +93,7 @@ export default function PersonalTrainingPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto"
           >
             Custom high-performance coaching engineered for elite athletes and those demanding technical precision. Experience a cinematic, data-driven approach to physical mastery in a state-of-the-art environment.
@@ -61,7 +101,7 @@ export default function PersonalTrainingPage() {
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
             onClick={openLeadModal}
             className="bg-primary-container text-background font-label-md text-label-md uppercase tracking-wider px-8 py-4 rounded font-bold shadow-[0_0_20px_rgba(42,183,255,0.3)] hover:shadow-[0_0_30px_rgba(42,183,255,0.5)] transition-all hover:scale-105 cursor-pointer"
           >
@@ -70,17 +110,54 @@ export default function PersonalTrainingPage() {
         </div>
       </section>
 
+      {/* Benefits Strip */}
+      <section className="relative py-16 px-6 md:px-16">
+        <div className="max-w-screen-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {benefits.map((benefit, idx) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: idx * 0.12 }}
+                className="relative group p-8 rounded-xl bg-[#0D1117]/80 border border-white/5 hover:border-primary/30 transition-all duration-500"
+              >
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="text-primary mb-5 p-3 inline-block rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">
+                    {benefit.title}
+                  </h3>
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    {benefit.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Meet the Team */}
-      <section className="py-16 px-6 md:px-16 max-w-screen-2xl mx-auto">
+      <section className="relative py-16 px-6 md:px-16 max-w-screen-2xl mx-auto">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[150px]" />
+          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-primary/8 blur-[100px]" />
+        </div>
+
         <motion.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="font-headline-lg text-3xl md:text-5xl text-on-surface mb-12 uppercase tracking-tight"
+          className="relative z-10 font-headline-lg text-3xl md:text-5xl text-on-surface mb-12 uppercase tracking-tight"
         >
           <FlipWord word="MEET THE TEAM" triggerOnView />
         </motion.h2>
-        <div className="flex gap-6 overflow-x-auto hide-scrollbar pb-8 snap-x snap-mandatory">
+        <div className="relative z-10 flex gap-6 overflow-x-auto hide-scrollbar pb-8 snap-x snap-mandatory">
           {coaches.map((coach, idx) => (
             <motion.div
               key={coach.name}
@@ -107,6 +184,40 @@ export default function PersonalTrainingPage() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="relative py-8 px-6 md:px-16">
+        <div className="max-w-screen-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/20 via-primary/10 to-surface border border-primary/20 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            {/* Decorative glow blobs */}
+            <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-primary/8 blur-[100px] pointer-events-none" />
+
+            <div className="relative z-10 text-center md:text-left">
+              <h2 className="font-headline-lg text-3xl md:text-4xl text-on-surface mb-2 uppercase tracking-tight">
+                Train With The Best
+              </h2>
+              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Unlock your full potential with world-class coaches. Your transformation starts now.
+              </p>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={openLeadModal}
+              className="relative z-10 shrink-0 bg-primary-container text-background font-label-md text-label-md uppercase tracking-wider px-10 py-4 rounded font-bold shadow-[0_0_20px_rgba(42,183,255,0.3)] hover:shadow-[0_0_30px_rgba(42,183,255,0.5)] transition-all cursor-pointer"
+            >
+              Book Your Session
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 

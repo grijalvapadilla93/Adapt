@@ -69,8 +69,13 @@ export default function SpecialtyProgramsPage() {
       </header>
 
       {/* Bento Grid Section */}
-      <section className="px-6 md:px-16 pb-24 max-w-screen-2xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[400px]">
+      <section className="bg-surface-container-lowest py-16 w-full">
+        <div className="px-6 md:px-16 pb-0 max-w-screen-2xl mx-auto relative z-10">
+          {/* Ambient background glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full"></div>
+          </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[400px] relative z-10">
           {/* ADAPT KIDS - Wide card */}
           <article className="md:col-span-8 relative rounded-xl overflow-hidden group bg-surface-container border border-surface-bright/50">
             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${programs[0].image}')` }}></div>
@@ -143,6 +148,35 @@ export default function SpecialtyProgramsPage() {
               </div>
             </div>
           </article>
+        </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="bg-background py-20 px-6 md:px-16">
+        <div className="max-w-4xl mx-auto text-center relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-3xl blur-3xl opacity-50 pointer-events-none"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative z-10"
+          >
+            <span className="text-primary font-label-md uppercase tracking-[0.2em] text-xs mb-4 block">Next Generation Athletics</span>
+            <h2 className="font-display-xl text-3xl md:text-5xl text-on-surface uppercase mb-6">
+              <FlipWord word="BUILD THE FUTURE" triggerOnView />
+            </h2>
+            <p className="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-8">
+              From foundational motor skills to elite competition prep — every athlete deserves a program engineered for their stage.
+            </p>
+            <button
+              onClick={openLeadModal}
+              className="bg-primary-container text-black font-label-md text-label-md uppercase px-10 py-4 rounded font-bold transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(42,183,255,0.3)] hover:shadow-[0_0_30px_rgba(42,183,255,0.5)] cursor-pointer"
+            >
+              Enroll Today
+            </button>
+          </motion.div>
         </div>
       </section>
     </div>

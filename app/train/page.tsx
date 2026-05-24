@@ -26,6 +26,12 @@ const trainingCategories = [
   }
 ];
 
+const stats = [
+  { value: "15+", label: "Coaches" },
+  { value: "24/7", label: "Access" },
+  { value: "Olympic", label: "Platforms" }
+];
+
 export default function TrainPage() {
   const openLeadModal = () => {
     window.dispatchEvent(new CustomEvent("open-lead-modal", { detail: { plan: "Pro" } }));
@@ -38,10 +44,23 @@ export default function TrainPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 flex flex-col gap-8 z-10">
             <div>
+              {/* Eyebrow */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-4 mb-4"
+              >
+                <span className="h-px w-12 bg-primary/50"></span>
+                <span className="font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary">
+                  Performance Training
+                </span>
+              </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
                 className="font-display-xl text-5xl sm:text-7xl text-on-surface mb-6 uppercase"
               >
                 <FlipWord word="TRAIN" />
@@ -94,48 +113,129 @@ export default function TrainPage() {
       </section>
 
       {/* Training Categories Grid */}
-      <section className="px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="font-display-xl text-3xl md:text-5xl uppercase mb-12 text-primary-container text-center"
-        >
-          <FlipWord word="TRAINING DISCIPLINES" triggerOnView />
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {trainingCategories.map((cat, idx) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative rounded-xl overflow-hidden h-[450px] shadow-2xl border-t border-primary/30 bg-surface-container-low"
-            >
-              <img
-                alt={cat.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src={cat.image}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="translate-y-[130px] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                  <h3 className="font-headline-md text-headline-md text-on-surface mb-4 drop-shadow-md">{cat.title}</h3>
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-[130px]">
-                    <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{cat.description}</p>
-                    <button
-                      onClick={openLeadModal}
-                      className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-6 py-2.5 shadow-[0_0_20px_rgba(42,183,255,0.3)] transition-shadow font-bold w-max cursor-pointer"
-                    >
-                      BOOK NOW
-                    </button>
+      <section className="relative px-6 md:px-16 py-24 max-w-full mx-0 bg-surface-container-lowest overflow-hidden">
+        {/* Subtle radial glow behind the grid */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-[1440px] mx-auto relative z-10">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="font-display-xl text-3xl md:text-5xl uppercase mb-12 text-primary-container text-center"
+          >
+            <FlipWord word="TRAINING DISCIPLINES" triggerOnView />
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {trainingCategories.map((cat, idx) => (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group relative rounded-xl overflow-hidden h-[450px] shadow-2xl border-t border-primary/30 bg-surface-container-low"
+              >
+                <img
+                  alt={cat.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={cat.image}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500"></div>
+                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  <div className="translate-y-[130px] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                    <h3 className="font-headline-md text-headline-md text-on-surface mb-4 drop-shadow-md">{cat.title}</h3>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-[130px]">
+                      <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{cat.description}</p>
+                      <button
+                        onClick={openLeadModal}
+                        className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-6 py-2.5 shadow-[0_0_20px_rgba(42,183,255,0.3)] transition-shadow font-bold w-max cursor-pointer"
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {stats.map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="relative rounded-xl p-8 bg-surface-container-low border-t border-primary/20 flex flex-col items-center text-center gap-2 shadow-lg"
+            >
+              <span className="font-display-xl text-4xl md:text-5xl text-primary-container uppercase">
+                <FlipWord word={stat.value} triggerOnView />
+              </span>
+              <span className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
+                {stat.label}
+              </span>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="px-6 md:px-16 py-8 max-w-full mx-0">
+        <div className="max-w-[1440px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-primary/20 via-primary/10 to-surface-container-low border border-primary/30 shadow-2xl"
+          >
+            {/* Decorative glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/15 blur-[100px] rounded-full pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 blur-[80px] rounded-full pointer-events-none"></div>
+
+            <div className="relative z-10 px-8 md:px-16 py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div>
+                <motion.h2
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="font-display-xl text-3xl md:text-4xl uppercase text-on-surface mb-2"
+                >
+                  Ready to transform?
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="font-body-lg text-body-lg text-on-surface-variant max-w-md"
+                >
+                  Step inside and experience the difference. Book your tour today.
+                </motion.p>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <button
+                  onClick={openLeadModal}
+                  className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-10 py-4 font-bold transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(42,183,255,0.3)] hover:shadow-[0_0_30px_rgba(42,183,255,0.5)] cursor-pointer whitespace-nowrap"
+                >
+                  BOOK A TOUR
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -30,8 +30,11 @@ export default function WorkspacePage() {
   return (
     <div className="pt-24 selection:bg-primary-container selection:text-on-primary-container">
       {/* Hero */}
-      <section className="px-6 md:px-16 py-16 max-w-[1920px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[70vh]">
+      <section className="relative px-6 md:px-16 py-16 max-w-[1920px] mx-auto bg-surface-container-lowest overflow-hidden">
+        {/* Subtle glow */}
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[100px] pointer-events-none" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[70vh] relative z-10">
           <div className="md:col-span-5 flex flex-col justify-center pr-0 md:pr-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -40,7 +43,7 @@ export default function WorkspacePage() {
               className="mb-6 flex items-center gap-3"
             >
               <div className="h-[2px] w-8 bg-primary"></div>
-              <span className="font-label-md text-label-md uppercase text-primary tracking-widest">Facility</span>
+              <span className="font-label-md text-label-md uppercase text-primary tracking-widest">Co-Working</span>
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -107,6 +110,34 @@ export default function WorkspacePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Stats Strip */}
+      <section className="relative bg-surface-container-lowest border-y border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 max-w-[1920px] mx-auto">
+          {[
+            { icon: "⚡", value: "50+ Mbps", label: "Dedicated Fiber" },
+            { icon: "🔒", value: "24 Focus Pods", label: "Private & Soundproof" },
+            { icon: "🕐", value: "Open 5AM–11PM", label: "7 Days a Week" },
+          ].map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="flex items-center gap-5 px-6 py-8 md:px-12 md:py-10 group cursor-default"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-2xl group-hover:bg-primary/20 transition-colors shrink-0">
+                {stat.icon}
+              </div>
+              <div>
+                <div className="font-headline-sm text-xl md:text-2xl text-on-surface font-bold">{stat.value}</div>
+                <div className="font-body-md text-body-md text-on-surface-variant text-sm">{stat.label}</div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -204,6 +235,40 @@ export default function WorkspacePage() {
               </span>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0c141c] via-primary/10 to-[#0c141c] border-t border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(42,183,255,0.08),transparent_60%)] pointer-events-none" />
+        <div className="max-w-[1920px] mx-auto px-6 md:px-16 py-16 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center md:text-left"
+          >
+            <h2 className="font-display-xl text-4xl md:text-5xl text-on-surface uppercase mb-3">
+              Work Where You <span className="text-primary">Train</span>
+            </h2>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+              Elite performance isn't confined to the gym. Bring your ambition to a workspace built for champions.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <button
+              onClick={openLeadModal}
+              className="bg-primary-container text-black font-label-md text-label-md uppercase px-10 py-4 rounded font-bold transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(42,183,255,0.4)] flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+            >
+              BOOK A TOUR
+            </button>
+          </motion.div>
         </div>
       </section>
     </div>
