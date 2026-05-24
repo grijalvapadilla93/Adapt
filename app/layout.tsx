@@ -57,6 +57,8 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
+        {/* Prevent white flash before CSS loads on mobile */}
+        <style dangerouslySetInnerHTML={{ __html: `html,body{background-color:#081018;color:#dbe3ef;margin:0;padding:0}` }} />
       </head>
       <body className="antialiased bg-background text-on-surface font-sans min-h-screen flex flex-col">
         <Navbar />

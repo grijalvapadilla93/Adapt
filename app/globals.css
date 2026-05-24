@@ -82,6 +82,16 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+/* Hard fallbacks for mobile — CSS custom properties may not resolve on slow connections */
+@media (max-width: 768px) {
+  .bg-surface-container-lowest { background-color: #070f17; }
+  .bg-surface-container-low { background-color: #141c25; }
+  .bg-surface { background-color: #0c141c; }
+  .bg-background { background-color: #081018; }
+  .bg-surface-container-high { background-color: #232b33; }
+  .bg-surface-container { background-color: #182029; }
+}
+
 .blue-glow {
   box-shadow: 0 0 20px rgba(42, 183, 255, 0.3);
 }
