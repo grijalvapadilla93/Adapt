@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
+import { Zap } from "lucide-react";
 import FlipWord from "@/src/components/FlipWord";
 
 type Day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
@@ -103,8 +104,8 @@ export default function GroupClassesPage() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center justify-center mb-6 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(42,183,255,0.1)]"
         >
-          <span className="text-primary text-xl mr-2">⚡</span>
-          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase">Group Training</span>
+          <span className="mr-1.5"><Zap className="w-4 h-4 text-primary" /></span>
+          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase whitespace-nowrap">Group Training</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Diamond, Zap, Lock, Clock } from "lucide-react";
 import FlipWord from "@/src/components/FlipWord";
 
 const workspacePricing = [
@@ -102,7 +103,7 @@ export default function WorkspacePage() {
                   className="bg-[#0D1117] p-6 rounded-lg border border-white/5 hover:-translate-y-1 transition-transform duration-300 cursor-pointer group"
                 >
                   <div className="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <span className="text-primary text-2xl font-bold">◆</span>
+                    <Diamond className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="font-headline-sm text-headline-sm text-on-surface mb-2">{feat.title}</h3>
                   <p className="font-body-md text-body-md text-on-surface-variant text-sm">{feat.desc}</p>
@@ -117,9 +118,9 @@ export default function WorkspacePage() {
       <section className="relative bg-surface-container-lowest border-y border-white/5">
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 max-w-[1920px] mx-auto">
           {[
-            { icon: "⚡", value: "50+ Mbps", label: "Dedicated Fiber" },
-            { icon: "🔒", value: "24 Focus Pods", label: "Private & Soundproof" },
-            { icon: "🕐", value: "Open 5AM–11PM", label: "7 Days a Week" },
+            { icon: "zap", value: "50+ Mbps", label: "Dedicated Fiber" },
+            { icon: "lock", value: "24 Focus Pods", label: "Private & Soundproof" },
+            { icon: "clock", value: "Open 5AM–11PM", label: "7 Days a Week" },
           ].map((stat, idx) => (
             <motion.div
               key={stat.label}
@@ -130,7 +131,7 @@ export default function WorkspacePage() {
               className="flex items-center gap-5 px-6 py-8 md:px-12 md:py-10 group cursor-default"
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-2xl group-hover:bg-primary/20 transition-colors shrink-0">
-                {stat.icon}
+                {stat.icon === "zap" ? <Zap className="w-6 h-6 text-primary" /> : stat.icon === "lock" ? <Lock className="w-6 h-6 text-primary" /> : <Clock className="w-6 h-6 text-primary" />}
               </div>
               <div>
                 <div className="font-headline-sm text-xl md:text-2xl text-on-surface font-bold">{stat.value}</div>

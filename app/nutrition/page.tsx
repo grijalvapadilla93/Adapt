@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { FlaskConical, ArrowRight } from "lucide-react";
 import FlipWord from "@/src/components/FlipWord";
 
 const nutritionFeatures = [
@@ -133,7 +134,7 @@ export default function NutritionPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 pointer-events-none"></div>
             </div>
             <div className="absolute bottom-8 left-8 bg-surface-container-high/80 backdrop-blur-md border border-white/10 rounded-lg p-4 flex items-center gap-3 shadow-xl">
-              <span className="text-primary text-3xl font-bold">⚗</span>
+              <FlaskConical className="w-6 h-6 text-primary" />
               <div>
                 <div className="font-label-md text-label-md text-on-surface-variant uppercase text-[10px]">
                   Precision Formula
@@ -223,7 +224,7 @@ export default function NutritionPage() {
                 onClick={openLeadModal}
                 className="inline-flex items-center gap-2 font-label-md text-label-md text-primary uppercase hover:gap-3 transition-all cursor-pointer"
               >
-                {feat.linkLabel} <span className="text-sm">→</span>
+                {feat.linkLabel} <ArrowRight className="w-3.5 h-3.5 inline" />
               </button>
             </motion.div>
           ))}

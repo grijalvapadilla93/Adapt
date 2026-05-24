@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Zap, ArrowRight } from "lucide-react";
 import FlipWord from "@/src/components/FlipWord";
 
 const programs = [
@@ -46,8 +47,8 @@ export default function SpecialtyProgramsPage() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center justify-center mb-6 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(42,183,255,0.1)]"
         >
-          <span className="text-primary text-xl mr-2">⚡</span>
-          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase">Specialty & Youth Development</span>
+          <span className="mr-1.5"><Zap className="w-4 h-4 text-primary" /></span>
+          <span className="font-label-md text-label-md text-on-surface tracking-widest uppercase whitespace-nowrap">Specialty & Youth Development</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -93,7 +94,7 @@ export default function SpecialtyProgramsPage() {
                 onClick={openLeadModal}
                 className="inline-flex items-center gap-2 font-label-md text-label-md text-primary uppercase tracking-wider hover:text-on-surface transition-colors cursor-pointer"
               >
-                Explore Program <span>→</span>
+                Explore Program <ArrowRight className="w-4 h-4 inline" />
               </button>
             </div>
           </article>
@@ -105,8 +106,8 @@ export default function SpecialtyProgramsPage() {
             <div className="absolute inset-0 border-t border-primary/30 rounded-xl"></div>
             <div className="relative h-full flex flex-col justify-end p-8">
               <div className="mb-auto">
-                <span className="bg-primary/20 text-primary border border-primary/50 px-3 py-1 rounded font-label-md text-label-md uppercase tracking-wider inline-flex items-center gap-2">
-                  <span className="text-[16px]">⚡</span> {programs[1].tag}
+                <span className="bg-primary/20 text-primary border border-primary/50 px-3 py-1 rounded font-label-md text-label-md uppercase tracking-wider inline-flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5" /> {programs[1].tag}
                 </span>
               </div>
               <h2 className="font-headline-md text-headline-md text-on-surface mb-3 uppercase tracking-tight">{programs[1].title}</h2>
@@ -116,7 +117,7 @@ export default function SpecialtyProgramsPage() {
                 onClick={openLeadModal}
                 className="inline-flex items-center gap-2 font-label-md text-label-md text-primary uppercase tracking-wider hover:text-on-surface transition-colors cursor-pointer"
               >
-                View Details <span>→</span>
+                View Details <ArrowRight className="w-4 h-4 inline" />
               </button>
             </div>
           </article>
