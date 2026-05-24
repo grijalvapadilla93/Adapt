@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Clock, Mail, Facebook, Youtube, Instagram } from "lucide-react";
 import { motion } from "motion/react";
 import { ViewOnMap } from "./ui/view-on-map";

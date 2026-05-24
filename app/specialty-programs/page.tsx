@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "motion/react";
-import FlipWord from "../components/FlipWord";
+import FlipWord from "@/src/components/FlipWord";
 
 const programs = [
   {

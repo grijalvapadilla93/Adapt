@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "motion/react";
-import FlipWord from "../components/FlipWord";
+import FlipWord from "@/src/components/FlipWord";
 
 const workspacePricing = [
   { name: "Daily Pass", price: 40, period: "/day", features: ["Access to open-plan zones", "High-speed connectivity"], featured: false },

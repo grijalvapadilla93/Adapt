@@ -1,6 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "motion/react";
-import FlipWord from "../components/FlipWord";
+import FlipWord from "@/src/components/FlipWord";
 
 type Day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 

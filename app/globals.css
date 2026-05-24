@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-tertiary-fixed: #cee5ff;
+  --color-primary-fixed: #c9e6ff;
+  --color-surface-variant: #2e353f;
+  --color-on-primary-fixed: #001e2f;
+  --color-on-surface: #dbe3ef;
+  --color-secondary-fixed-dim: #96ccff;
+  --color-surface-container-low: #141c25;
+  --color-primary-container: #2ab7ff;
+  --color-on-primary-container: #004565;
+  --color-primary: #8dcfff;
+  --color-outline: #88929c;
+  --color-surface-dim: #0c141c;
+  --color-on-secondary: #003353;
+  --color-secondary: #96ccff;
+  --color-on-secondary-fixed: #001d32;
+  --color-on-tertiary-container: #00446c;
+  --color-on-secondary-container: #f5f8ff;
+  --color-on-tertiary-fixed-variant: #004a76;
+  --color-inverse-on-surface: #29313a;
+  --color-on-error-container: #ffdad6;
+  --color-outline-variant: #3e4850;
+  --color-surface-container-high: #232b33;
+  --color-primary-fixed-dim: #89ceff;
+  --color-tertiary-fixed-dim: #96cbff;
+  --color-inverse-surface: #dbe3ef;
+  --color-secondary-fixed: #cee5ff;
+  --color-background: #081018;
+  --color-surface-tint: #89ceff;
+  --color-surface-container-lowest: #070f17;
+  --color-error-container: #93000a;
+  --color-error: #ffb4ab;
+  --color-on-primary-fixed-variant: #004c6e;
+  --color-on-surface-variant: #bdc8d2;
+  --color-on-secondary-fixed-variant: #004a75;
+  --color-on-error: #690005;
+  --color-inverse-primary: #006591;
+  --color-on-tertiary: #003353;
+  --color-surface-container-highest: #2e353f;
+  --color-surface: #0c141c;
+  --color-tertiary-container: #73b2eb;
+  --color-on-tertiary-fixed: #001d33;
+  --color-tertiary: #99cdff;
+  --color-on-primary: #00344d;
+  --color-surface-container: #182029;
+  --color-secondary-container: #0277b8;
+  --color-on-background: #dbe3ef;
+  --color-surface-bright: #323a43;
+
+  --spacing-margin-desktop: 64px;
+  --spacing-section-gap: 120px;
+  --spacing-base: 8px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+
+  --font-label-md: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Space Grotesk", sans-serif;
+  --font-display-xl: "Space Grotesk", sans-serif;
+  --font-headline-sm: "Space Grotesk", sans-serif;
+  --font-headline-md: "Space Grotesk", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-lg: "Space Grotesk", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+
+  --text-label-md: 14px;
+  --text-headline-lg-mobile: 36px;
+  --text-display-xl: 72px;
+  --text-headline-sm: 24px;
+  --text-headline-md: 32px;
+  --text-body-md: 16px;
+  --text-headline-lg: 48px;
+  --text-body-lg: 18px;
+}
+
+body {
+  background-color: #081018;
+  color: #dbe3ef;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+.blue-glow {
+  box-shadow: 0 0 20px rgba(42, 183, 255, 0.3);
+}
+.blue-glow-hover:hover {
+  box-shadow: 0 0 20px rgba(42, 183, 255, 0.6);
+}
+.electric-gradient {
+  position: absolute;
+  right: 10%;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(42, 183, 255, 0.8) 0%, rgba(21, 26, 34, 0.8) 100%);
+  z-index: 0;
+  mix-blend-mode: color-dodge;
+}
+.glass-panel {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(245, 247, 250, 0.1);
+}
+.glow-primary {
+  box-shadow: 0 0 30px rgba(42, 183, 255, 0.2);
+}
+.pro-highlight {
+  box-shadow: 0 0 40px rgba(42, 183, 255, 0.4);
+  border: 1px solid rgba(42, 183, 255, 0.5);
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
