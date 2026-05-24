@@ -1,0 +1,6 @@
+{
+  "name": "ADAPT | Cinematic Performance",
+  "description": "High-performance physical evolution. Functional training, elite equipment, recovery protocols, and community-driven results.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
