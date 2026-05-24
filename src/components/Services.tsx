@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 import { motion } from "motion/react";
 import { ServiceItem } from "../types";
@@ -38,12 +39,13 @@ const servicesData: ServiceItem[] = [
 ];
 
 export default function Services() {
+  const router = useRouter();
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
-  const toggleItem = (id: string) => {
-    setActiveItem(activeItem === id ? null : id);
+  const navigateToService = (id: string) => {
+    router.push(`/${id === "train" ? "train" : id}`);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -80,7 +82,7 @@ export default function Services() {
         {servicesData.map((service, index) => {
           const isOpen = activeItem === service.id;
           return (
-            <motion.div key={service.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.1 }} onClick={() => toggleItem(service.id)} onMouseEnter={() => setActiveItem(service.id)} onMouseLeave={() => setActiveItem(null)}
+            <motion.div key={service.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.1 }} onClick={() => navigateToService(service.id)} onMouseEnter={() => setActiveItem(service.id)} onMouseLeave={() => setActiveItem(null)}
               className={`accordion-tab group border-b border-white/10 py-12 md:py-16 px-6 md:px-16 cursor-pointer flex justify-between items-center bg-transparent backdrop-blur-sm relative overflow-hidden transition-all duration-700 ${isOpen ? "py-24 md:py-36 bg-white/[0.02]" : ""}`}>
               <div className={`absolute inset-0 z-0 pointer-events-none transition-all duration-700 ${isOpen ? "opacity-60 scale-105" : "opacity-30 scale-100"}`}>
                 <img alt={service.title} className="w-full h-full object-cover" src={service.image} />
