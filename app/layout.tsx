@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
+import { LenisProvider } from "@/src/components/LenisProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,7 +63,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-background text-on-surface font-sans min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <LenisProvider>
+          <main className="flex-grow">{children}</main>
+        </LenisProvider>
         <Footer />
       </body>
     </html>

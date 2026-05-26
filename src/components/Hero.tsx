@@ -1,96 +1,56 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import FlipWord from "./FlipWord";
 
+const tickerItems = [
+  "STRENGTH",
+  "SPEED",
+  "ENDURANCE",
+  "POWER",
+  "RESILIENCE",
+  "GRIT",
+  "PRECISION",
+  "DISCIPLINE",
+];
+
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Detect touch devices — skip reverse playback on mobile
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-    if (isTouchDevice) {
-      // Simple loop: just replay on mobile
-      const handleEnded = () => {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      };
-      video.addEventListener("ended", handleEnded);
-      return () => video.removeEventListener("ended", handleEnded);
-    }
-
-    // Desktop: reverse playback on loop
-    let animationFrameId: number;
-    let isReversing = false;
-    let lastTime = 0;
-
-    const step = (now: number) => {
-      if (!video) return;
-      if (isReversing) {
-        if (lastTime === 0) lastTime = now;
-        const elapsed = (now - lastTime) / 1000;
-        let newTime = video.currentTime - elapsed;
-        if (newTime <= 0) {
-          newTime = 0;
-          isReversing = false;
-          lastTime = 0;
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        } else {
-          video.currentTime = newTime;
-          lastTime = now;
-          animationFrameId = requestAnimationFrame(step);
-        }
-      }
-    };
-
-    const handleEnded = () => {
-      isReversing = true;
-      video.pause();
-      lastTime = 0;
-      animationFrameId = requestAnimationFrame(step);
-    };
-
-    video.addEventListener("ended", handleEnded);
-    return () => {
-      video.removeEventListener("ended", handleEnded);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
     <section className="relative flex items-center min-h-dvh pt-24 overflow-hidden bg-[#081018]">
+      {/* Background layers */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#081018]">
-        {/* Static poster fallback */}
-        <img
-          alt="ADAPT performance center exterior"
-          src="/images/hero_building_cloudy_dawn_1779578340877.png"
-          className="absolute inset-0 w-full h-full object-cover opacity-40 select-none z-0"
-        />
-        {/* Video layer */}
+        {/* Video - único fondo */}
         <video
-          ref={videoRef}
           src="/videos/Herosectionvideoadapt.mp4"
-          className="absolute inset-0 w-full h-full object-cover opacity-95 select-none z-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-95 select-none pointer-events-none"
           autoPlay
           muted
+          loop
           playsInline
-          loop={false}
           preload="auto"
         />
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/30 via-[#081018]/50 to-[#081018] pointer-events-none z-20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/95 via-[#081018]/40 to-transparent pointer-events-none z-20 hidden md:block"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/80 via-[#081018]/50 to-[#081018] pointer-events-none z-20 md:hidden"></div>
-        {/* Radial glow - lighter on mobile */}
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_40%,rgba(42,183,255,0.04)_0%,transparent_50%)] pointer-events-none z-30"></div>
-        {/* Electric gradient - desktop only */}
         <div className="electric-gradient z-30 hidden md:block"></div>
+      </div>
+
+      {/* Hyrox Ticker */}
+      <div className="absolute top-28 md:top-36 left-0 right-0 z-20 overflow-hidden opacity-20 pointer-events-none">
+        <div className="hyrox-ticker">
+          {[...tickerItems, ...tickerItems].map((item, i) => (
+            <span
+              key={i}
+              className="font-display-xl text-[60px] md:text-[100px] text-white uppercase font-bold mx-6 md:mx-10 leading-none tracking-tight"
+              style={{ opacity: i % 2 === 0 ? 1 : 0.3 }}
+            >
+              {item}
+              <span className="text-primary-container mx-4 md:mx-6 font-thin">×</span>
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16">
