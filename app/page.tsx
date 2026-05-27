@@ -107,7 +107,7 @@ export default function HomePage() {
               ))}
             </div>
             <form onSubmit={handleSendMessage} className="p-3 border-t border-white/10 bg-surface-container-lowest flex gap-2">
-              <input type="text" value={chatMessage} onChange={(e) => setChatMessage(e.target.value)} placeholder="Ask pricing, hours, location..." className="flex-grow bg-surface border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary placeholder-white/30" />
+              <input type="text" value={chatMessage} onChange={(e) => setChatMessage(e.target.value)} placeholder="Ask pricing, hours, location..." className="flex-grow bg-surface border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary placeholder-white/30 select-auto" />
               <button type="submit" className="bg-primary hover:bg-primary-container p-2.5 rounded-lg text-black transition-all active:scale-95 cursor-pointer shadow-[0_0_10px_rgba(42,183,255,0.3)]"><Send className="w-3.5 h-3.5" /></button>
             </form>
           </motion.div>
@@ -125,7 +125,7 @@ export default function HomePage() {
                   <div className="mb-6"><h3 className="font-display-xl text-xl uppercase text-white font-bold">{selectedPlan === "General" ? "Book A Tour" : `Join Adapt: ${selectedPlan}`}</h3><p className="text-on-surface-variant text-xs mt-1 uppercase tracking-widest">Enter your details to initiate training.</p></div>
                   <form onSubmit={handleLeadSubmit} className="space-y-4">
                     {[{ label: "Name", key: "name", type: "text", placeholder: "John Doe" }, { label: "Email", key: "email", type: "email", placeholder: "john@example.com" }, { label: "Phone", key: "phone", type: "tel", placeholder: "(786) 555-0199" }].map(({ label, key, type, placeholder }) => (
-                      <div key={key}><label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1.5 font-bold">{label}</label><input type={type} required value={(leadForm as any)[key]} onChange={(e) => setLeadForm({ ...leadForm, [key]: e.target.value })} placeholder={placeholder} className="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-primary placeholder-white/20 transition-colors" /></div>
+                      <div key={key}><label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1.5 font-bold">{label}</label><input type={type} required value={(leadForm as any)[key]} onChange={(e) => setLeadForm({ ...leadForm, [key]: e.target.value })} placeholder={placeholder} className="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-primary placeholder-white/20 transition-colors select-auto" /></div>
                     ))}
                     <div className="pt-2"><button type="submit" disabled={formLoading} className="w-full bg-primary hover:bg-primary-container text-black font-bold uppercase py-3 rounded-lg transition-all cursor-pointer flex items-center justify-center gap-2 hover:scale-[1.01]">{formLoading ? <><Loader2 className="w-4 h-4 animate-spin" />SUBMITTING...</> : "SUBMIT"}</button></div>
                   </form>

@@ -238,7 +238,7 @@ export default function PersonalTrainingPage() {
               <div>
                 <label className="block font-label-md text-label-md text-on-surface mb-2 uppercase">Name</label>
                 <input
-                  className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors"
+                  className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors select-auto"
                   placeholder="ENTER NAME"
                   type="text"
                 />
@@ -246,7 +246,7 @@ export default function PersonalTrainingPage() {
               <div>
                 <label className="block font-label-md text-label-md text-on-surface mb-2 uppercase">Email</label>
                 <input
-                  className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors"
+                  className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors select-auto"
                   placeholder="ENTER EMAIL"
                   type="email"
                 />
@@ -254,7 +254,7 @@ export default function PersonalTrainingPage() {
             </div>
             <div>
               <label className="block font-label-md text-label-md text-on-surface mb-2 uppercase">Goal / Specialty Interest</label>
-              <select className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none">
+              <select className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none select-auto">
                 <option>Strength & Conditioning</option>
                 <option>Endurance</option>
                 <option>Mobility</option>
@@ -264,7 +264,7 @@ export default function PersonalTrainingPage() {
             <div>
               <label className="block font-label-md text-label-md text-on-surface mb-2 uppercase">Message</label>
               <textarea
-                className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors"
+                className="w-full bg-[#0D1117] border border-outline-variant/20 rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors select-auto"
                 placeholder="BRIEF DESCRIPTION OF YOUR OBJECTIVES"
                 rows={4}
               ></textarea>
