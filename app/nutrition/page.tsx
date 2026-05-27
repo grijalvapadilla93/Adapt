@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FlaskConical, ArrowRight } from "lucide-react";
+import { FlaskConical, ArrowRight, ClipboardList, Dna, TrendingUp } from "lucide-react";
 import FlipWord from "@/src/components/FlipWord";
 
 const nutritionFeatures = [
@@ -31,21 +31,21 @@ const howItWorks = [
     title: "Book Consultation",
     description:
       "Schedule a 1-on-1 session with our dietary engineers. We assess your biometrics, metabolic rate, and training goals to build your baseline profile.",
-    icon: "📋",
+    icon: <ClipboardList className="w-8 h-8 text-primary" />,
   },
   {
     step: "02",
     title: "Get Your Plan",
     description:
       "Receive a fully custom nutrition protocol — macro-calculated meals, supplement stack, and hydration strategy tailored to your discipline and recovery windows.",
-    icon: "🧬",
+    icon: <Dna className="w-8 h-8 text-primary" />,
   },
   {
     step: "03",
     title: "Track & Optimize",
     description:
       "Continuous biometric feedback and check-ins refine your protocol. We adjust macros, timing, and supplementation as your performance evolves.",
-    icon: "📈",
+    icon: <TrendingUp className="w-8 h-8 text-primary" />,
   },
 ];
 
@@ -183,7 +183,7 @@ export default function NutritionPage() {
               </div>
 
               {/* Icon */}
-              <div className="text-4xl mb-5">{step.icon}</div>
+              <div className="mb-5">{step.icon}</div>
 
               <h3 className="font-headline-sm text-headline-sm text-on-surface mb-3">
                 {step.title}

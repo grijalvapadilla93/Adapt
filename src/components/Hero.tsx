@@ -3,17 +3,6 @@
 import { motion } from "motion/react";
 import FlipWord from "./FlipWord";
 
-const tickerItems = [
-  "STRENGTH",
-  "SPEED",
-  "ENDURANCE",
-  "POWER",
-  "RESILIENCE",
-  "GRIT",
-  "PRECISION",
-  "DISCIPLINE",
-];
-
 export default function Hero() {
   return (
     <section className="relative flex items-center min-h-dvh pt-24 overflow-hidden bg-[#081018]">
@@ -37,26 +26,10 @@ export default function Hero() {
         <div className="electric-gradient z-30 hidden md:block"></div>
       </div>
 
-      {/* Hyrox Ticker */}
-      <div className="absolute top-28 md:top-36 left-0 right-0 z-20 overflow-hidden opacity-20 pointer-events-none">
-        <div className="hyrox-ticker">
-          {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span
-              key={i}
-              className="font-display-xl text-[60px] md:text-[100px] text-white uppercase font-bold mx-6 md:mx-10 leading-none tracking-tight"
-              style={{ opacity: i % 2 === 0 ? 1 : 0.3 }}
-            >
-              {item}
-              <span className="text-primary-container mx-4 md:mx-6 font-thin">×</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16">
         <div className="max-w-3xl lg:max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-            <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-4xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
+            <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-3xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
               <span className="block"><FlipWord word="MULTIDISCIPLINARY" delayOffset={0.1} /></span>
               <span className="text-white text-transparent bg-clip-text bg-gradient-to-r from-white via-on-surface to-primary block">
                 <FlipWord word="PERFORMANCE." delayOffset={0.75} />
@@ -64,7 +37,7 @@ export default function Hero() {
             </h1>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.35, ease: "easeOut" }} className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
-            Functional training. Elite equipment. Community-driven results.
+            Functional training. Elite equipment. Community-driven results. Train like your competition is watching.
           </motion.p>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 1.55, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4">
             <button

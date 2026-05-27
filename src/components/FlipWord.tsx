@@ -37,7 +37,7 @@ export default function FlipWord({
   };
 
   return (
-    <span className={`inline-flex flex-wrap ${className}`} style={{ perspective: "1000px" }}>
+    <span className={`inline-flex flex-wrap max-sm:flex-nowrap max-sm:whitespace-nowrap ${className}`} style={{ perspective: "1000px" }}>
       {word.split("").map((char, index) => {
         if (char === " ") {
           return (

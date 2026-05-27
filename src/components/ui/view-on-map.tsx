@@ -23,8 +23,8 @@ export const ViewOnMap: React.FC<ViewOnMapProps> = ({
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent blur-3xl rounded-3xl -z-10 animate-pulse duration-[6000ms]"></div>
       
       {/* Outer Map Card */}
-      <div 
-        className="w-full h-full relative overflow-hidden bg-[#0c141c]/95 border border-white/10 rounded-[2rem] shadow-[0_0_50px_rgba(42,183,255,0.15)] hover:shadow-[0_0_60px_rgba(42,183,255,0.25)] transition-all duration-500"
+<div 
+        className="w-full h-full relative overflow-hidden bg-[#0c141c]/95 border border-white/10 rounded-[2rem] shadow-[0_0_50px_rgba(42,183,255,0.15)] hover:shadow-[0_0_60px_rgba(42,183,255,0.25)] transition-all duration-500 group"
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -38,7 +38,6 @@ export const ViewOnMap: React.FC<ViewOnMapProps> = ({
             height="100%"
             style={{
               border: 0,
-              // Dark mode filter for Google Maps iframe to match the premium theme
               filter: 'invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.9)',
             }}
             src={publicMapUrl}
@@ -48,7 +47,18 @@ export const ViewOnMap: React.FC<ViewOnMapProps> = ({
           />
         </motion.div>
 
-        {/* High-tech custom loader for matching theme */}
+        {/* Dark overlay on map */}
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-all duration-500 z-10" />
+
+        {/* Get Directions button */}
+        <a
+          href={`https://maps.google.com/maps?daddr=${encodeURIComponent(address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-primary/90 hover:bg-primary text-black font-label-md text-xs uppercase tracking-widest font-bold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(42,183,255,0.3)]"
+        >
+          GET DIRECTIONS
+</a>
         {!isMapLoaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#070b10] border border-white/5 rounded-[2rem]">
             <Loader2 className="h-10 w-10 animate-spin text-primary shadow-[0_0_15px_rgba(42,183,255,0.5)] mb-3" />

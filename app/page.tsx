@@ -48,7 +48,7 @@ export default function HomePage() {
       let hb = true, bl = "BOOK TOUR";
       if (l.includes("pricing") || l.includes("cost")) { reply = "ADAPT offers 3 elite tiers:\n\n• **Base ($80/mo)**: Full gym floor, lockers, showers.\n• **Pro ($120/mo)**: 1:1 coaching, diagnostics, app.\n• **Elite ($260/mo)**: Unlimited recovery, workspace, premium services.\n\n*20% off with yearly billing.*"; bl = "SELECT MEMBERSHIP"; }
       else if (l.includes("hours") || l.includes("open")) { reply = "• **Mon-Fri**: 05:00 - 23:00\n• **Sat-Sun**: 07:00 - 20:00"; bl = "EXPLORE SERVICES"; }
-      else if (l.includes("location") || l.includes("address") || l.includes("miami")) { reply = "📍 **14901 NE 20th Ave, Studio A, North Miami, FL 33181**"; bl = "VIEW ON MAP"; }
+      else if (l.includes("location") || l.includes("address") || l.includes("miami")) { reply = "**14901 NE 20th Ave, Studio A, North Miami, FL 33181**"; bl = "VIEW ON MAP"; }
       else if (l.includes("recovery") || l.includes("sauna") || l.includes("plunge")) { reply = "**Recovery Suite**: Contrast Plunges, Infrared Saunas, Hyperbaric Chambers, Compression Lounge."; bl = "RECOVERY SUITE"; }
       else if (l.includes("coach") || l.includes("trainer")) { reply = "15+ **Master Performance Coaches** in Olympic lifting, velocity mechanics, rehab, and analytics."; bl = "BOOK DIAGNOSTIC"; }
       else if (l.includes("hello") || l.includes("hi") || l.includes("help")) { reply = "I can help with:\n1. Membership & Pricing\n2. Hours & Location\n3. Recovery Suite\n4. Coaching\n\nHow can I help?"; hb = false; }
