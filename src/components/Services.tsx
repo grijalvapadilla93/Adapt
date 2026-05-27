@@ -41,8 +41,46 @@ const servicesData: ServiceItem[] = [
 export default function Services() {
   const router = useRouter();
 
+  const tickerItems = [
+    "STRENGTH", "SPEED", "ENDURANCE", "POWER",
+    "RESILIENCE", "GRIT", "PRECISION", "DISCIPLINE",
+  ];
+
   return (
     <section id="services" className="bg-surface relative overflow-hidden border-t border-white/10 py-24 md:py-[120px] px-6 md:px-16">
+      {/* Hyrox ticker beams - tilted background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] -left-[10%] -right-[10%] rotate-[12deg] opacity-[0.04]">
+          <div className="hyrox-ticker">
+            {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+              <span key={i} className="font-display-xl text-[100px] md:text-[140px] text-white uppercase font-bold mx-8 leading-none tracking-tight whitespace-nowrap">
+                {item}
+                <span className="text-primary-container mx-6 font-thin">×</span>
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="absolute top-[45%] -left-[10%] -right-[10%] -rotate-[8deg] opacity-[0.03]">
+          <div className="hyrox-ticker" style={{ animationDirection: "reverse" }}>
+            {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+              <span key={i} className="font-display-xl text-[80px] md:text-[110px] text-white uppercase font-bold mx-8 leading-none tracking-tight whitespace-nowrap">
+                {item}
+                <span className="text-primary-container mx-6 font-thin">×</span>
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="absolute top-[75%] -left-[10%] -right-[10%] rotate-[15deg] opacity-[0.025]">
+          <div className="hyrox-ticker">
+            {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+              <span key={i} className="font-display-xl text-[70px] md:text-[90px] text-white uppercase font-bold mx-8 leading-none tracking-tight whitespace-nowrap">
+                {item}
+                <span className="text-primary-container mx-6 font-thin">×</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.h2
