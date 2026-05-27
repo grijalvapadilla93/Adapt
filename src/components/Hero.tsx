@@ -2,7 +2,21 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import FlipWord from "./FlipWord";
+
+const easeOutExpo = [0.22, 1, 0.36, 1] as const;
+
+function WordReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.9, delay, ease: easeOutExpo }}
+      className={className}
+    >
+      {children}
+    </motion.span>
+  );
+}
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -31,9 +45,11 @@ export default function Hero() {
             poster="/images/hero_building_cloudy_dawn_1779578340877.png"
           />
         </motion.div>
-        {/* Bottom fade + mobile top darkening (consolidated) */}
+        {/* Bottom fade + mobile top darkening */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/80 md:from-[#081018]/30 via-[#081018]/50 to-[#081018] pointer-events-none z-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/95 via-[#081018]/40 to-transparent pointer-events-none z-20 hidden md:block" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/80 via-[#081018]/30 to-transparent pointer-events-none z-20 hidden md:block" />
+        {/* Vignette – subtle edge darkening for cinematic depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(8,16,24,0.6)_100%)] pointer-events-none z-20" />
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_40%,rgba(42,183,255,0.04)_0%,transparent_50%)] pointer-events-none z-30"></div>
         <div className="electric-gradient z-30 hidden md:block"></div>
       </div>
@@ -48,18 +64,31 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16">
         <div className="max-w-3xl lg:max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-            <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-4xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
-              <span className="block"><FlipWord word="MULTIDISCIPLINARY" delayOffset={0.1} /></span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-on-surface to-primary block">
-                <FlipWord word="PERFORMANCE." delayOffset={0.75} />
-              </span>
-            </h1>
-          </motion.div>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.35, ease: "easeOut" }} className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+          <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-4xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
+            <WordReveal delay={0.1} className="block">MULTIDISCIPLINARY</WordReveal>
+            <WordReveal delay={0.45} className="text-transparent bg-clip-text bg-gradient-to-r from-white via-on-surface to-primary block">PERFORMANCE.</WordReveal>
+          </h1>
+          {/* Accent line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.85, ease: easeOutExpo }}
+            className="h-[2px] w-16 bg-primary origin-left mb-8"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.95, ease: easeOutExpo }}
+            className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl"
+          >
             Functional training. Elite equipment. Community-driven results. Train like your competition is watching.
           </motion.p>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 1.55, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2, ease: easeOutExpo }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-lead-modal", { detail: { plan: "General" } }))}
               className="font-label-md text-label-md uppercase px-8 py-4 rounded font-bold transition-all duration-300 bg-gradient-to-r from-primary to-primary-container hover:from-primary-container hover:to-primary text-black cursor-pointer text-center shadow-[0_0_20px_rgba(42,183,255,0.4)] hover:shadow-[0_0_30px_rgba(42,183,255,0.6)] active:scale-95"
@@ -80,7 +109,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
+        transition={{ delay: 2.0, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
       >
         <span className="font-label-md text-[9px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
