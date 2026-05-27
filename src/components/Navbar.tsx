@@ -87,7 +87,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className={`fixed inset-0 bg-background/98 backdrop-blur-2xl z-40 md:hidden flex flex-col justify-center items-center gap-8 transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
+      <div className={`fixed inset-0 bg-background/98 backdrop-blur-2xl z-[60] md:hidden flex flex-col justify-center items-center gap-8 transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
         {serviceLinks.map(({ to, label }) => (
           <Link key={to} href={to} onClick={() => setIsMobileMenuOpen(false)} className="font-display-xl text-3xl text-white uppercase tracking-wider hover:text-primary transition-colors">{label}</Link>
         ))}

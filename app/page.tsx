@@ -66,7 +66,7 @@ export default function HomePage() {
     <div className="selection:bg-primary-container selection:text-on-primary-container text-on-surface font-sans antialiased">
       <AnimatePresence>
         {loading && (
-          <motion.div exit={{ opacity: 0, transition: { duration: 0.4 } }} className="fixed inset-0 bg-[#081018] z-[9999] flex flex-col items-center justify-center">
+          <motion.div exit={{ opacity: 0, transition: { duration: 0.4 } }} className="fixed inset-0 bg-[#081018] z-[9999] flex flex-col items-center justify-center touch-none" style={{ overscrollBehavior: "none" }}>
             <motion.img initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: [0.85, 1.05, 1], opacity: 1 }} transition={{ duration: 0.6 }} className="h-14 w-auto mb-8 filter brightness-110" src="/images/AdaptIconLogo.png" />
             <div className="w-48 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
               <motion.div initial={{ left: "-100%" }} animate={{ left: "100%" }} transition={{ repeat: Infinity, duration: 1.2 }} className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
