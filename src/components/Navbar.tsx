@@ -15,10 +15,13 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobileMenuOpen]);
 
   const openDropdown = useCallback(() => {
     if (closeTimeoutRef.current) { clearTimeout(closeTimeoutRef.current); closeTimeoutRef.current = null; }
@@ -45,7 +48,7 @@ export default function Navbar() {
   };
 
   const navItems = ["arena", "pricing", "community", "location"];
-  const navLabels: Record<string, string> = { arena: "Facilities", pricing: "Pricing", community: "Community", location: "Location" };
+  const navLabels: Record<string, string> = { arena: "Facilities", pricing: "Pricing", community: "Testimonials", location: "Location" };
 
   const serviceLinks = [
     { to: "/train", label: "Train" },
@@ -58,7 +61,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-5 transition-all duration-300 ${scrolled ? "bg-background/85 backdrop-blur-xl border-b border-white/10 shadow-2xl py-4" : "bg-transparent border-b border-transparent"}`}>
-        <Link href="/" className="flex items-center cursor-pointer gap-3" scroll={false}>
+        <Link href="/" className="flex items-center cursor-pointer gap-3">
           <img alt="ADAPT Icon Logo" className="h-8 w-auto filter brightness-110" src="/images/AdaptIconLogo.png" />
           <img alt="ADAPT Logo Text" className="h-5 w-auto filter brightness-110 hidden sm:block" src="/images/AdaptLogoText.png" />
         </Link>

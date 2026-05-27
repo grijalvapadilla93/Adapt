@@ -60,13 +60,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} overflow-x-hidden`}>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         {/* Prevent white flash before CSS loads on mobile */}
         <style dangerouslySetInnerHTML={{ __html: `html,body{background-color:#081018;color:#dbe3ef;margin:0;padding:0}` }} />
       </head>
-      <body className="antialiased bg-background text-on-surface font-sans min-h-screen flex flex-col">
+      <body className="antialiased bg-background text-on-surface font-sans min-h-screen flex flex-col overflow-x-hidden">
         <Navbar />
         <LenisProvider>
           <main className="flex-grow">{children}</main>

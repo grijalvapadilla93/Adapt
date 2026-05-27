@@ -96,7 +96,7 @@ export default function NutritionPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-display-xl text-5xl sm:text-7xl text-on-surface uppercase drop-shadow-lg"
+              className="font-display-xl text-3xl sm:text-5xl lg:text-7xl text-on-surface uppercase drop-shadow-lg"
             >
               <FlipWord word="NUTRITION ASSESSMENT" />
             </motion.h1>

@@ -33,7 +33,7 @@ export default function Arena() {
 
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
-          <motion.img key={currentSlide} alt="The Arena" className="w-full h-full object-cover select-none" src={arenaSlides[currentSlide].image} initial={{ opacity: 0, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.7 }} />
+          <motion.img key={currentSlide} alt="The Arena" className="w-full h-full object-cover select-none" src={arenaSlides[currentSlide].image} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.7 }} />
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/80 via-[#081018]/20 to-transparent"></div>
       </div>

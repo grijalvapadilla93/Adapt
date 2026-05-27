@@ -19,7 +19,7 @@ export default function Hero() {
       {/* Background layers */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#081018]">
         {/* Video with subtle parallax */}
-        <motion.div className="absolute inset-[-10%]" style={{ y: videoY }}>
+        <motion.div className="absolute inset-0 md:inset-[-10%]" style={{ y: videoY }}>
           <video
             src="/videos/Herosectionvideoadapt.mp4"
             className="w-full h-full object-cover opacity-95 select-none pointer-events-none"
@@ -27,12 +27,13 @@ export default function Hero() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/images/hero_building_cloudy_dawn_1779578340877.png"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/30 via-[#081018]/50 to-[#081018] pointer-events-none z-20"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/95 via-[#081018]/40 to-transparent pointer-events-none z-20 hidden md:block"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/80 via-[#081018]/50 to-[#081018] pointer-events-none z-20 md:hidden"></div>
+        {/* Bottom fade + mobile top darkening (consolidated) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#081018]/80 md:from-[#081018]/30 via-[#081018]/50 to-[#081018] pointer-events-none z-20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#081018]/95 via-[#081018]/40 to-transparent pointer-events-none z-20 hidden md:block" />
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_40%,rgba(42,183,255,0.04)_0%,transparent_50%)] pointer-events-none z-30"></div>
         <div className="electric-gradient z-30 hidden md:block"></div>
       </div>
@@ -48,9 +49,9 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16">
         <div className="max-w-3xl lg:max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-            <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-3xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
+            <h1 className="font-display-xl text-white uppercase mb-6 leading-tight text-4xl sm:text-6xl md:text-8xl flex flex-col gap-1 sm:gap-2">
               <span className="block"><FlipWord word="MULTIDISCIPLINARY" delayOffset={0.1} /></span>
-              <span className="text-white text-transparent bg-clip-text bg-gradient-to-r from-white via-on-surface to-primary block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-on-surface to-primary block">
                 <FlipWord word="PERFORMANCE." delayOffset={0.75} />
               </span>
             </h1>

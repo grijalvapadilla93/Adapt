@@ -35,6 +35,7 @@ export default function Testimonials() {
           <img
             src={testimonialImages[currentIndex]}
             alt=""
+            loading="lazy"
             className="w-full h-full object-cover grayscale opacity-70"
           />
           <div className="absolute inset-0 bg-surface/80" />
@@ -46,7 +47,7 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="font-display-xl text-5xl md:text-7xl uppercase mb-14 text-primary-container tracking-tight"
+          className="font-display-xl text-3xl sm:text-5xl md:text-7xl uppercase mb-14 text-primary-container tracking-tight"
         >
           <FlipWord word="VOICES OF THE ELITE" triggerOnView />
         </motion.h2>

@@ -23,7 +23,7 @@ export default function Location() {
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column: Text & Contact */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <motion.h2 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -207,7 +207,7 @@ export default function Location() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="order-1 lg:order-2 flex items-center justify-center"
+            className="order-2 lg:order-2 flex items-center justify-center"
           >
             <ViewOnMap
               locationName="ADAPT Lab"

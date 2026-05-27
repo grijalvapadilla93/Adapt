@@ -52,7 +52,7 @@ export default function TrainPage() {
                 className="flex items-center gap-4 mb-4"
               >
                 <span className="h-px w-12 bg-primary/50"></span>
-                <span className="font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary">
+                <span className="font-label-md text-label-md uppercase tracking-[0.2em] text-primary">
                   Performance Training
                 </span>
               </motion.div>

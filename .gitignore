@@ -7,3 +7,6 @@ coverage/
 .env*
 !.env.example
 .next/
+
+# Windows Zone Identifier files
+*:Zone.Identifier

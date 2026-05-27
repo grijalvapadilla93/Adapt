@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 
 interface FlipWordProps {
@@ -15,13 +18,25 @@ export default function FlipWord({
   charClassName = "",
   triggerOnView = false,
 }: FlipWordProps) {
-  // If triggerOnView is true, we rely on parent's initial="..." and whileInView="..." propagating variants.
-  // We use variants to animate when parent comes in view.
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  if (reducedMotion) {
+    return <span className={className}>{word}</span>;
+  }
+
   const letterVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       rotateX: -100,
-      y: -8 
+      y: -8
     },
     visible: (customDelay: number) => ({
       opacity: 1,
@@ -36,56 +51,69 @@ export default function FlipWord({
     }),
   };
 
+  let charIndex = 0;
+
+  const renderChar = (char: string, localIndex: number, globalIndex: number) => {
+    const customDelay = delayOffset + globalIndex * 0.04;
+
+    if (triggerOnView) {
+      return (
+        <motion.span
+          key={globalIndex}
+          className={`inline-block ${charClassName}`}
+          style={{
+            transformOrigin: "top center",
+            backfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+          }}
+          variants={letterVariants}
+          custom={customDelay}
+        >
+          {char}
+        </motion.span>
+      );
+    }
+
+    return (
+      <motion.span
+        key={globalIndex}
+        className={`inline-block ${charClassName}`}
+        style={{
+          transformOrigin: "top center",
+          backfaceVisibility: "hidden",
+          transformStyle: "preserve-3d",
+        }}
+        initial="hidden"
+        animate="visible"
+        variants={letterVariants}
+        custom={customDelay}
+      >
+        {char}
+      </motion.span>
+    );
+  };
+
+  const words = word.split(" ");
+  const elements: React.ReactNode[] = [];
+
+  words.forEach((w, wi) => {
+    if (wi > 0) {
+      elements.push(<span key={`s${wi}`} className="inline-block select-none">&nbsp;</span>);
+    }
+    elements.push(
+      <span key={`w${wi}`} className="inline-block whitespace-nowrap">
+        {w.split("").map((char, ci) => {
+          const result = renderChar(char, ci, charIndex);
+          charIndex++;
+          return result;
+        })}
+      </span>
+    );
+  });
+
   return (
-    <span className={`inline-flex flex-wrap max-sm:flex-nowrap max-sm:whitespace-nowrap ${className}`} style={{ perspective: "1000px" }}>
-      {word.split("").map((char, index) => {
-        if (char === " ") {
-          return (
-            <span key={index} className="inline-block select-none">
-              &nbsp;
-            </span>
-          );
-        }
-
-        const customDelay = delayOffset + index * 0.04;
-
-        if (triggerOnView) {
-          return (
-            <motion.span
-              key={index}
-              className={`inline-block ${charClassName}`}
-              style={{
-                transformOrigin: "top center",
-                backfaceVisibility: "hidden",
-                transformStyle: "preserve-3d",
-              }}
-              variants={letterVariants}
-              custom={customDelay}
-            >
-              {char}
-            </motion.span>
-          );
-        }
-
-        // Default immediate/on-load behavior (e.g., in Hero)
-        return (
-          <motion.span
-            key={index}
-            className={`inline-block ${charClassName}`}
-            style={{
-              transformOrigin: "top center",
-              backfaceVisibility: "hidden",
-              transformStyle: "preserve-3d",
-            }}
-            initial="hidden"
-            animate="visible"
-            variants={letterVariants}
-            custom={customDelay}
-          >
-            {char}
-          </motion.span>
-        );
-      })}
+    <span className={`inline ${className}`} style={{ perspective: "1000px" }}>
+      {elements}
     </span>
   );
 }

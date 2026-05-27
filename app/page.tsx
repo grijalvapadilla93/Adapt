@@ -25,7 +25,7 @@ export default function HomePage() {
     { sender: "bot", text: "Welcome to the ADAPT Lab. I am your Performance Strategist assistant. How can we optimize your athletic and recovery lifecycle today?" }
   ]);
 
-  useEffect(() => { const t = setTimeout(() => setLoading(false), 900); return () => clearTimeout(t); }, []);
+  useEffect(() => { const t = setTimeout(() => setLoading(false), 600); return () => clearTimeout(t); }, []);
   useEffect(() => {
     const h = () => { const ts = document.documentElement.scrollHeight - window.innerHeight; if (ts > 0) setScrollProgress((window.scrollY / ts) * 100); setShowBackToTop(window.scrollY > 400); };
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
@@ -79,13 +79,13 @@ export default function HomePage() {
 
       <AnimatePresence>
         {showBackToTop && (
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="fixed bottom-26 right-8 z-40 hidden md:block">
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="fixed bottom-26 right-8 z-40">
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-[#151A22]/90 hover:bg-surface-container-high border border-white/10 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-[0_0_15px_rgba(42,183,255,0.1)] hover:shadow-[0_0_20px_rgba(42,183,255,0.3)] hover:scale-105 active:scale-95 cursor-pointer text-primary"><ArrowUp className="w-5 h-5" /></button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-8 right-8 z-40 hidden md:block">
+      <div className="fixed bottom-8 right-8 z-40">
         <button onClick={() => setIsChatOpen(!isChatOpen)} className="bg-[#151A22]/90 hover:bg-surface-container-high border border-white/10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(42,183,255,0.2)] hover:shadow-[0_0_30px_rgba(42,183,255,0.4)] group active:scale-95 cursor-pointer"><MessageSquare className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" /></button>
       </div>
 
