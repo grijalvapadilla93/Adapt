@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const coaches = [
@@ -111,7 +113,11 @@ export default function PersonalTrainingPage() {
       </section>
 
       {/* Benefits Strip */}
-      <section className="relative py-16 px-6 md:px-16">
+      <section className="relative py-16 px-6 md:px-16 overflow-hidden">
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute top-1/3 -right-20 w-[400px] h-[400px] bg-primary/8 blur-[130px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-20 -left-20 w-[350px] h-[350px] bg-primary/5 blur-[110px] rounded-full pointer-events-none"></div>
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => (
@@ -142,8 +148,10 @@ export default function PersonalTrainingPage() {
       </section>
 
       {/* Meet the Team */}
-      <section className="relative py-16 px-6 md:px-16 max-w-screen-2xl mx-auto">
-        {/* Background glow */}
+      <section className="relative py-16 px-6 md:px-16 max-w-screen-2xl mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[150px]" />
           <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-primary/8 blur-[100px]" />
@@ -188,7 +196,9 @@ export default function PersonalTrainingPage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="relative py-8 px-6 md:px-16">
+      <section className="relative py-8 px-6 md:px-16"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
         <div className="max-w-screen-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

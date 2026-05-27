@@ -52,7 +52,9 @@ export default function Navbar() {
 
   const serviceLinks = [
     { to: "/train", label: "Train" },
+    { to: "/personal-training", label: "Personal Training" },
     { to: "/group-classes", label: "Group Classes" },
+    { to: "/specialty-programs", label: "Specialty Programs" },
     { to: "/recharge", label: "Recharge" },
     { to: "/workspace", label: "Workspace" },
     { to: "/nutrition", label: "Nutrition" },
@@ -71,7 +73,7 @@ export default function Navbar() {
             <button onClick={() => scrollToSection("services")} className="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 pb-1 flex items-center gap-1 cursor-pointer">
               Services <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
             </button>
-            <div className={`absolute top-full left-0 mt-1 pt-2 w-52 bg-background/95 backdrop-blur-xl border border-white/10 rounded-lg py-3 transition-all duration-200 shadow-2xl z-50 ${isServicesOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1 pointer-events-none"}`}>
+            <div className={`absolute top-full left-0 mt-1 pt-2 w-60 bg-background/95 backdrop-blur-xl border border-white/10 rounded-lg py-3 transition-all duration-200 shadow-2xl z-50 ${isServicesOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1 pointer-events-none"}`}>
               {serviceLinks.map(({ to, label }) => (
                 <Link key={to} href={to} onClick={() => setIsServicesOpen(false)} className="block px-6 py-2.5 font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary hover:bg-white/5 transition-colors">{label}</Link>
               ))}

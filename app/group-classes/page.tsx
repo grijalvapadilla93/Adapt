@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Zap } from "lucide-react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 type Day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
@@ -126,7 +128,14 @@ export default function GroupClassesPage() {
       </section>
 
       {/* Schedule Tabs — bg-surface-container-lowest */}
-      <section className="bg-surface-container-lowest px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 py-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-primary/8 blur-[160px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-40 left-1/4 w-[400px] h-[400px] bg-primary/5 blur-[130px] rounded-full pointer-events-none"></div>
         <div className="flex overflow-x-auto gap-2 mb-8 pb-2 hide-scrollbar">
           {days.map((day) => (
             <button
@@ -171,7 +180,11 @@ export default function GroupClassesPage() {
       </section>
 
       {/* Class Cards — bg-background */}
-      <section className="bg-background px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 py-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/6 blur-[170px] rounded-full pointer-events-none"></div>
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -200,28 +213,33 @@ export default function GroupClassesPage() {
                 <span className="bg-primary/20 text-primary border border-primary/50 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold">{card.level}</span>
                 <span className="bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold">{card.duration}</span>
               </div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="translate-y-[100px] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                  <h3 className="font-headline-md text-headline-md text-on-surface mb-2">{card.title}</h3>
-                  <p className="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">{card.subtitle}</p>
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{card.description}</p>
-                    <button
-                      onClick={openLeadModal}
-                      className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-6 py-2.5 shadow-[0_0_20px_rgba(42,183,255,0.3)] transition-shadow font-bold w-max cursor-pointer"
-                    >
-                      BOOK CLASS
-                    </button>
+                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  <div className="translate-y-0 md:translate-y-[100px] md:group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                    <h3 className="font-headline-md text-headline-md text-on-surface mb-2">{card.title}</h3>
+                    <p className="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">{card.subtitle}</p>
+                    <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 md:delay-100">
+                      <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{card.description}</p>
+                      <button
+                        onClick={openLeadModal}
+                        className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-6 py-2.5 shadow-[0_0_20px_rgba(42,183,255,0.3)] transition-shadow font-bold w-max cursor-pointer"
+                      >
+                        BOOK CLASS
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Class Pricing — bg-surface-container-lowest */}
-      <section className="bg-surface-container-lowest px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 py-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <div className="absolute -top-30 -right-30 w-[450px] h-[450px] bg-primary/8 blur-[160px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-20 -left-20 w-[350px] h-[350px] bg-primary/5 blur-[130px] rounded-full pointer-events-none"></div>
         <motion.h2
           initial="hidden"
           whileInView="visible"

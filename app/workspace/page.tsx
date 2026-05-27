@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { Diamond, Zap, Lock, Clock } from "lucide-react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const workspacePricing = [
@@ -31,10 +33,13 @@ export default function WorkspacePage() {
   return (
     <div className="pt-24 selection:bg-primary-container selection:text-on-primary-container">
       {/* Hero */}
-      <section className="relative px-6 md:px-16 py-16 max-w-[1920px] mx-auto bg-surface-container-lowest overflow-hidden">
-        {/* Subtle glow */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[100px] pointer-events-none" />
+      <section className="relative px-6 md:px-16 py-16 max-w-[1920px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute -top-60 -right-60 w-[600px] h-[600px] rounded-full bg-primary/6 blur-[180px] pointer-events-none" />
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/4 blur-[150px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-primary/5 blur-[180px] pointer-events-none" />
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[70vh] relative z-10">
           <div className="md:col-span-5 flex flex-col justify-center pr-0 md:pr-12">
             <motion.div
@@ -115,7 +120,8 @@ export default function WorkspacePage() {
       </section>
 
       {/* Stats Strip */}
-      <section className="relative bg-surface-container-lowest border-y border-white/5">
+      <section className="relative bg-surface-container-lowest border-y border-white/5 overflow-hidden">
+        <NoiseOverlay />
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5 max-w-[1920px] mx-auto">
           {[
             { icon: "zap", value: "50+ Mbps", label: "Dedicated Fiber" },
@@ -143,7 +149,12 @@ export default function WorkspacePage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-surface-container-low py-16 px-6 md:px-16 w-full">
+      <section className="relative py-16 px-6 md:px-16 w-full overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #0a121c 0%, #0f1e30 40%, #0c1828 60%, #0a121c 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/6 blur-[180px] rounded-full pointer-events-none"></div>
         <div className="max-w-[1920px] mx-auto">
           <motion.div
             initial="hidden"
@@ -206,7 +217,12 @@ export default function WorkspacePage() {
       </section>
 
       {/* Amenities Section */}
-      <section className="px-6 md:px-16 w-full max-w-[1920px] mx-auto pb-24 pt-16">
+      <section className="relative px-6 md:px-16 w-full max-w-[1920px] mx-auto pb-24 pt-16"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-primary/6 blur-[150px] rounded-full pointer-events-none"></div>
         <motion.h2
           initial="hidden"
           whileInView="visible"

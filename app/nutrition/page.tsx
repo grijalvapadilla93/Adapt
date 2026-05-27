@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { FlaskConical, ArrowRight, ClipboardList, Dna, TrendingUp } from "lucide-react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const nutritionFeatures = [
@@ -149,7 +151,14 @@ export default function NutritionPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="px-6 md:px-16 pb-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 pb-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 -left-20 w-[500px] h-[500px] bg-primary/8 blur-[150px] rounded-full"></div>
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full"></div>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -202,7 +211,13 @@ export default function NutritionPage() {
       </section>
 
       {/* Features Section */}
-      <section className="px-6 md:px-16 pb-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 pb-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute -top-20 -right-20 w-[450px] h-[450px] bg-primary/8 blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-20 left-1/4 w-[350px] h-[350px] bg-primary/5 blur-[130px] rounded-full pointer-events-none"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {nutritionFeatures.map((feat, idx) => (
             <motion.div
@@ -232,7 +247,11 @@ export default function NutritionPage() {
       </section>
 
       {/* Meal Gallery Section */}
-      <section className="px-6 md:px-16 pb-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 pb-16 max-w-[1440px] mx-auto overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-primary/6 blur-[140px] rounded-full pointer-events-none"></div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -282,10 +301,12 @@ export default function NutritionPage() {
 
       {/* Bottom CTA Section */}
       <section className="relative px-6 md:px-16 py-24 max-w-[1440px] mx-auto">
-        {/* Background glow */}
+        <NoiseOverlay />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full"></div>
         </div>
+        <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-10 right-10 w-[250px] h-[250px] bg-primary/8 blur-[80px] rounded-full pointer-events-none"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

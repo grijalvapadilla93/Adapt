@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const rechargeServices = [
@@ -111,7 +113,15 @@ export default function RechargePage() {
       </section>
 
       {/* Services Grid — bg-surface-container-lowest */}
-      <div className="bg-surface-container-lowest">
+      <div className="relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-primary/8 blur-[180px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-primary/5 blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/4 blur-[200px] rounded-full pointer-events-none"></div>
         <section className="px-6 md:px-16 py-20 max-w-[1440px] mx-auto">
           {/* Section Header */}
           <motion.div
@@ -153,9 +163,9 @@ export default function RechargePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="translate-y-[130px] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                  <div className="translate-y-0 md:translate-y-[130px] md:group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                     <h3 className="font-headline-md text-headline-md text-on-surface mb-4 drop-shadow-md">{service.title}</h3>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-[130px]">
+                    <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 md:delay-100 h-auto md:h-[130px]">
                       <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{service.description}</p>
                       <button
                         onClick={openLeadModal}
@@ -181,7 +191,8 @@ export default function RechargePage() {
           transition={{ duration: 0.7 }}
           className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 via-surface-container-low to-secondary/10 border border-primary/20 p-12 md:p-20 text-center"
         >
-          {/* Inner ambient glow */}
+          <div className="absolute -top-30 -right-30 w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+          <div className="absolute -bottom-30 -left-30 w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(42,183,255,0.12)_0%,transparent_70%)] pointer-events-none"></div>
           <div className="relative z-10 flex flex-col items-center gap-8">
             <div>

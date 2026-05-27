@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { Zap, ArrowRight } from "lucide-react";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const programs = [
@@ -70,12 +72,18 @@ export default function SpecialtyProgramsPage() {
       </header>
 
       {/* Bento Grid Section */}
-      <section className="bg-surface-container-lowest py-16 w-full">
+      <section className="relative py-16 w-full overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
         <div className="px-6 md:px-16 pb-0 max-w-screen-2xl mx-auto relative z-10">
-          {/* Ambient background glow */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full"></div>
           </div>
+          <div className="absolute -top-60 -right-60 w-[600px] h-[600px] bg-primary/8 blur-[180px] rounded-full pointer-events-none"></div>
+          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-primary/4 blur-[150px] rounded-full pointer-events-none"></div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[400px] relative z-10">
           {/* ADAPT KIDS - Wide card */}
           <article className="md:col-span-8 relative rounded-xl overflow-hidden group bg-surface-container border border-surface-bright/50">
@@ -154,7 +162,11 @@ export default function SpecialtyProgramsPage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-background py-20 px-6 md:px-16">
+      <section className="relative py-20 px-6 md:px-16 overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #081018 0%, #0c1c2e 50%, #081018 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <NoiseOverlay />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/8 blur-[140px] rounded-full pointer-events-none"></div>
         <div className="max-w-4xl mx-auto text-center relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-3xl blur-3xl opacity-50 pointer-events-none"></div>
           <motion.div

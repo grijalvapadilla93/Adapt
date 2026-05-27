@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
+import NoiseOverlay from "@/src/components/NoiseOverlay";
+import DotGrid from "@/src/components/DotGrid";
 import FlipWord from "@/src/components/FlipWord";
 
 const trainingCategories = [
@@ -32,7 +35,15 @@ const stats = [
   { value: "Olympic", label: "Platforms" }
 ];
 
+const categoryRoutes: Record<string, string> = {
+  "Strength & Conditioning": "/train",
+  "Personal Training": "/personal-training",
+  "Group Classes": "/group-classes",
+  "Specialty Programs": "/specialty-programs",
+};
+
 export default function TrainPage() {
+  const router = useRouter();
   const openLeadModal = () => {
     window.dispatchEvent(new CustomEvent("open-lead-modal", { detail: { plan: "Pro" } }));
   };
@@ -113,9 +124,15 @@ export default function TrainPage() {
       </section>
 
       {/* Training Categories Grid */}
-      <section className="relative px-6 md:px-16 py-24 max-w-full mx-0 bg-surface-container-lowest overflow-hidden">
-        {/* Subtle radial glow behind the grid */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <section className="relative px-6 md:px-16 py-24 max-w-full mx-0 overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #070f17 0%, #0c1c2e 40%, #0a1625 60%, #070f17 100%)" }}>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <NoiseOverlay />
+        <DotGrid />
+        <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/8 blur-[160px] rounded-full pointer-events-none"></div>
+        <div className="absolute -top-60 -right-60 w-[700px] h-[700px] bg-primary/6 blur-[200px] rounded-full pointer-events-none"></div>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-primary/4 blur-[150px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-[1440px] mx-auto relative z-10">
           <motion.h2
@@ -134,7 +151,8 @@ export default function TrainPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative rounded-xl overflow-hidden h-[450px] shadow-2xl border-t border-primary/30 bg-surface-container-low"
+                onClick={() => router.push(categoryRoutes[cat.title])}
+                className="group relative rounded-xl overflow-hidden h-[450px] shadow-2xl border-t border-primary/30 bg-surface-container-low cursor-pointer"
               >
                 <img
                   alt={cat.title}
@@ -144,12 +162,12 @@ export default function TrainPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="translate-y-[130px] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                  <div className="translate-y-0 md:translate-y-[130px] md:group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                     <h3 className="font-headline-md text-headline-md text-on-surface mb-4 drop-shadow-md">{cat.title}</h3>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-[130px]">
+                    <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 md:delay-100 h-auto md:h-[130px]">
                       <p className="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">{cat.description}</p>
                       <button
-                        onClick={openLeadModal}
+                        onClick={(e) => { e.stopPropagation(); openLeadModal(); }}
                         className="bg-primary-container text-black font-label-md text-label-md uppercase rounded px-6 py-2.5 shadow-[0_0_20px_rgba(42,183,255,0.3)] transition-shadow font-bold w-max cursor-pointer"
                       >
                         BOOK NOW
@@ -164,7 +182,11 @@ export default function TrainPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+      <section className="relative px-6 md:px-16 py-16 max-w-[1440px] mx-auto">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[700px] h-[700px] bg-primary/6 blur-[150px] rounded-full"></div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat, idx) => (
             <motion.div
